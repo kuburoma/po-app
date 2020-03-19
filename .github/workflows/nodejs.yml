@@ -16,11 +16,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install, build, and test
-        run: |
-          yarn install
-          yarn run build
-          yarn test
+      - name: yarn install
+        run: yarn install
+        working-directory: ./fe/app
+      - name: yarn build
+        run: yarn build
+        working-directory: ./fe/app
+      - name: yarn test
+        run: yarn test
         working-directory: ./fe/app
       - name: Azure upload
         uses: azure/CLI@v1
