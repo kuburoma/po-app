@@ -22,9 +22,6 @@ jobs:
       - name: yarn build
         run: yarn build
         working-directory: ./fe/app
-      - name: yarn test
-        run: yarn test
-        working-directory: ./fe/app
       - name: Azure upload
         uses: azure/CLI@v1
         with:
