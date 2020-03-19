@@ -21,7 +21,8 @@ jobs:
         java-version: '11'
 
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean package azure-webapp:deploy
+      working-directory: ./be/api
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v1
@@ -29,4 +30,4 @@ jobs:
         app-name: 'covid-po-api'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_5d1ea370b3504905a81ad45e342b4e7e }}
-        package: '${{ github.workspace }}/target/*.jar'
+        package: '${{ github.workspace }}./be/api/target/*.jar'
