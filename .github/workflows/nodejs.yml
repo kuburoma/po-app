@@ -20,11 +20,11 @@ jobs:
       - name: yarn install
         run: yarn install
         working-directory: ./fe/app
-      - name: |
+      - name: yarn build
+        run: |
           export REACT_APP_GOOGLE_API_KEY=${{ secrets.REACT_APP_GOOGLE_API_KEY }}
           printenv
           yarn build
-        run: yarn build
         working-directory: ./fe/app
       - name: Azure upload
         uses: azure/CLI@v1
